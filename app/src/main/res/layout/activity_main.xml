@@ -27,6 +27,7 @@
         android:textColor="@android:color/holo_blue_dark"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="16dp" />
 
 </android.support.constraint.ConstraintLayout>
