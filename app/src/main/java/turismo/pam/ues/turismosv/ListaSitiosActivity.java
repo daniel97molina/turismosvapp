@@ -23,21 +23,27 @@ public class ListaSitiosActivity extends AppCompatActivity {
 
         int codigoBusqueda = intent.getIntExtra("codigoBusqueda",1);
         String nombreCategoria = intent.getStringExtra("nombreCategoria");
+
+        MainActivity ma = new MainActivity();
+        SitioService service = ma.sitioService;
+        List listaPrevia;
         switch (codigoBusqueda){
             case 0:
                 txtTitulo.setText("Sitios Cercanos");
+                listaPrevia = service.findByCategoria(1);
                 break;
             case -1:
                 txtTitulo.setText("Resultados de búsqueda");
+                listaPrevia = service.findByCategoria(1);
                 break;
             default:
                 txtTitulo.setText(nombreCategoria);
+                listaPrevia = service.findByCategoria(codigoBusqueda);
                 break;
         }
 
 
-        MainActivity service = new MainActivity();
-        final List<Sitio> sitios = service.findByCategoria(codigoBusqueda);
+        final List<Sitio> sitios = listaPrevia;
 
         ListView lv = (ListView) findViewById(R.id.listaSitios);
         AdapterSitio adapter = new AdapterSitio(this, sitios);

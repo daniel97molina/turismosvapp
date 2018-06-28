@@ -1,5 +1,5 @@
 #.iml
-#.gradle
+.gradle
 /local.properties
 /.idea/workspace.xml
 /.idea/libraries
@@ -24,7 +24,7 @@ gen/
 out/
 
 # Gradle files
-.gradle/
+#.gradle/
 build/
 
 # Local configuration file (sdk path, etc)
