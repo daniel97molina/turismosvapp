@@ -70,7 +70,6 @@ public class AdapterItem extends BaseAdapter {
 
             ImageView imagen = (ImageView) v.findViewById(R.id.imageView4);
             imagen.setImageDrawable(dir.getImage());
-
             return v;
         }
     }
