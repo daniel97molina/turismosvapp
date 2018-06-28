@@ -11,8 +11,8 @@
         android:layout_alignLeft="@+id/txtTituloSitio"
         android:layout_alignStart="@+id/txtTituloSitio"
         android:layout_below="@+id/txtTituloSitio"
-        android:layout_x="71dp"
-        android:layout_y="41dp"
+        android:layout_x="81dp"
+        android:layout_y="44dp"
         android:text="Texto Frase"
         android:textSize="12sp" />
 
@@ -23,16 +23,16 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="63dp"
         android:layout_marginStart="63dp"
-        android:layout_x="70dp"
+        android:layout_x="81dp"
         android:layout_y="11dp"
         android:text="Titulo Frase"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@android:color/holo_blue_dark"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="21sp" />
 
     <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="56dp"
+        android:id="@+id/imgSitio"
+        android:layout_width="67dp"
         android:layout_height="70dp"
         android:layout_alignBottom="@+id/txtDescripcionSitio"
         android:layout_alignParentLeft="true"

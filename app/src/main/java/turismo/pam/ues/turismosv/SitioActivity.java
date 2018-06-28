@@ -13,12 +13,12 @@ public class SitioActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sitio);
 
         Intent intent = getIntent();
-        String message = intent.getStringExtra("sitio_nombre");
+        String nombre = intent.getStringExtra("sitio_nombre");
 
         TextView sitio_nombre = findViewById(R.id.sitio_nombre);
         TextView sitio_descripcion = findViewById(R.id.sitio_descripcion);
         sitio_descripcion.setText("La activity nueva incluye un archivo de diseño en blanco, por lo que ahora agregarás una vista de texto en la que aparecerá el mensaje.");
-        sitio_nombre.setText(message);
+        sitio_nombre.setText(nombre);
     }
 
 

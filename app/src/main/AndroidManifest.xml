@@ -19,7 +19,10 @@
         <activity
             android:name=".SitioActivity"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".BuscarActivity"></activity>
+        <activity
+            android:name=".BuscarActivity"
+            android:parentActivityName=".MainActivity" />
+        <activity android:name=".ListaSitiosActivity"></activity>
     </application>
 
 </manifest>
