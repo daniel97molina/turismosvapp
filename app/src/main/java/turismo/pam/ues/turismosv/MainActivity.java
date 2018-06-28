@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     SQLiteDatabase db;
 
     //Instancia de SitioService
-    SitioService sitioService = new SitioService(getApplicationContext());
+    SitioService sitioService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,11 +66,12 @@ public class MainActivity extends AppCompatActivity {
 
         //Manejo de la BD
         ConexionSQLiteHelper conexion = new ConexionSQLiteHelper(this, "DBTurismo", null, 1);
-        //db = conexion.getWritableDatabase();
+        db = conexion.getWritableDatabase();
+        sitioService = new SitioService(db, getApplicationContext());
 
         //Insersion de datos a la base
-        sitioService.insertarCategorias();
-        sitioService.insertarSitios();
+        //sitioService.insertarCategorias();
+        //sitioService.insertarSitios();
 
         final ArrayList<Categoria> category = new ArrayList<Categoria>();
 //        category.add(new Categoria("1","cat1","descripcion1",

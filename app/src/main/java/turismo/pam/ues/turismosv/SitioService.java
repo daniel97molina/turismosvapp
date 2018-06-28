@@ -9,6 +9,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
@@ -16,11 +17,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class SitioService {
+public class SitioService extends AppCompatActivity {
     SQLiteDatabase db;
-
-    ConexionSQLiteHelper conexion2=new ConexionSQLiteHelper(this.contexto,"DBTurismo",null,1);
-
 
     private Context contexto;
 
@@ -28,9 +26,12 @@ public class SitioService {
         this.contexto = contexto;
     }
 
-    public Sitio findById(int idSitio) {
-        db= conexion2.getReadableDatabase();
+    public SitioService(SQLiteDatabase db, Context contexto) {
+        this.db = db;
+        this.contexto = contexto;
+    }
 
+    public Sitio findById(int idSitio) {
         String[] parametros = new String[]{String.valueOf(idSitio)};
         String[] campos = new String[]{"idSitio", "nombre", "latitud", "longitud", "descripcion", "imagen", "idCategoria"};
 
@@ -55,8 +56,6 @@ public class SitioService {
     }
 
     public List<Sitio> findByCategoria(int idCategoria) {
-        db= conexion2.getReadableDatabase();
-
         String[] parametros = new String[]{String.valueOf(idCategoria)};
         String[] campos = new String[]{"idSitio", "nombre", "latitud", "longitud", "descripcion", "imagen", "idCategoria"};
 
@@ -89,8 +88,6 @@ public class SitioService {
     }
 
     public List<Sitio> findByNameLike(String texto) {
-        db= conexion2.getReadableDatabase();
-
         String[] parametros = new String[]{"%" + texto + "%"};
 
         try {
@@ -122,8 +119,6 @@ public class SitioService {
     }
 
     public List<Sitio> findByLatitudLongitud(String latitud, String longitud) {
-        db= conexion2.getReadableDatabase();
-
         String[] parametros = new String[]{latitud, longitud};
 
         try {
@@ -155,8 +150,6 @@ public class SitioService {
     }
 
     public String nombreCategoria(int idCategoria) {
-        db= conexion2.getReadableDatabase();
-
         String[] parametros = new String[]{String.valueOf(idCategoria)};
         String[] campos = new String[]{"nombre"};
 
@@ -194,8 +187,6 @@ public class SitioService {
     }
 
     public void insertarCategorias() {
-        db= conexion2.getWritableDatabase();
-
         //Insertar Categoria 1
         ContentValues nuevaCategoria = new ContentValues();
         nuevaCategoria.put("idCategoria", 1);
@@ -228,8 +219,6 @@ public class SitioService {
     }
 
     public void insertarSitios() {
-        db= conexion2.getWritableDatabase();
-
         //Insertar Sitio 1
         ContentValues nuevoRegistro = new ContentValues();
         nuevoRegistro.put("idSitio", 1);
