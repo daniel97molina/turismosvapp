@@ -60,16 +60,16 @@ public class AdapterItem extends BaseAdapter {
                 v = inf.inflate(R.layout.lista, null);
             }
 
-            Categoria dir = items.get(position);
-
-            TextView title = (TextView) v.findViewById(R.id.category);
-            title.setText(dir.getTitle());
-
-            TextView description = (TextView) v.findViewById(R.id.texto);
-            description.setText(dir.getDescription());
-
-            ImageView imagen = (ImageView) v.findViewById(R.id.imageView4);
-            imagen.setImageDrawable(dir.getImage());
+//            Categoria dir = items.get(position);
+//
+//            TextView title = (TextView) v.findViewById(R.id.category);
+//            title.setText(dir.getTitle());
+//
+//            TextView description = (TextView) v.findViewById(R.id.texto);
+//            description.setText(dir.getDescription());
+//
+//            ImageView imagen = (ImageView) v.findViewById(R.id.imageView4);
+//            imagen.setImageDrawable(dir.getImage());
 
             return v;
         }
