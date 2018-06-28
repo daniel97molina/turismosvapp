@@ -59,7 +59,7 @@ public class AdapterSitio extends BaseAdapter{
 
         if (convertView == null) {
             LayoutInflater inf = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            v = inf.inflate(R.layout.lista, null);
+            v = inf.inflate(R.layout.listasitio, null);
         }
 
 
@@ -71,7 +71,7 @@ public class AdapterSitio extends BaseAdapter{
             TextView description = (TextView) v.findViewById(R.id.txtDescripcionSitio);
             description.setText(s.getDescripcion());
 
-            ImageView imagen = (ImageView) v.findViewById(R.id.imageView4);
+            ImageView imagen = (ImageView) v.findViewById(R.id.imgSitio);
             imagen.setImageBitmap(s.getImagen());
 
         return v;

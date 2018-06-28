@@ -1,89 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:fillViewport="true">
-
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    tools:context="uesocc.ipam2018.aplicacionturismo.MainActivity">
+    android:layout_height="match_parent"
+    tools:context="turismo.pam.ues.turismosv.MainActivity">
 
-    <EditText
-        android:id="@+id/inputText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="text" />
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="325dp"
+        android:layout_height="49dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="Categorías"
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_blue_dark"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnBuscarSitio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Buscar sitio" />
+        android:id="@+id/button3"
+        android:layout_width="0dp"
+        android:layout_height="110dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:onClick="redirigirBotones"
+        android:tag="4"
+        android:text="playas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button4"
+        app:layout_constraintTop_toBottomOf="@+id/button6" />
 
     <Button
-        android:id="@+id/btnBuscarCategoria"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Buscar categoria" />
+        android:id="@+id/button6"
+        android:layout_width="0dp"
+        android:layout_height="110dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="88dp"
+        android:onClick="redirigirBotones"
+        android:tag="2"
+        android:text="Sitios Turísticos"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/button5"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btnFindByNameLike"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Buscar por nombre" />
+        android:id="@+id/button4"
+        android:layout_width="0dp"
+        android:layout_height="110dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:onClick="redirigirBotones"
+        android:tag="3"
+        android:text="Parques Nacionales"
+        app:layout_constraintEnd_toStartOf="@+id/button3"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button5" />
 
     <Button
-        android:id="@+id/btnFindByLatitudLongitud"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Buscar por latitud y longitud" />
+        android:id="@+id/button5"
+        android:layout_width="0dp"
+        android:layout_height="110dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="88dp"
+        android:onClick="redirigirBotones"
+        android:tag="1"
+        android:text="sitios Arqueológicos"
+        app:layout_constraintEnd_toStartOf="@+id/button6"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/idSitio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="idSitio" />
+    <Button
+        android:id="@+id/button7"
+        android:layout_width="343dp"
+        android:layout_height="110dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Pueblos Vivos"
+        android:onClick="redirigirBotones"
+        android:tag="5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button4" />
 
-    <TextView
-        android:id="@+id/nombreSitio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="nombreSitio" />
-
-    <TextView
-        android:id="@+id/latitudSitio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="latitudSitio" />
-
-    <TextView
-        android:id="@+id/longitudSitio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="longitudSitio" />
-
-    <TextView
-        android:id="@+id/categoriaSitio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="idCategoria" />
-
-    <TextView
-        android:id="@+id/descripcionSitio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="descripcionSitio" />
-
-    <ImageView
-        android:id="@+id/imagenSitio"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:srcCompat="@mipmap/ic_launcher" />
+</android.support.constraint.ConstraintLayout>
 
 
-</LinearLayout>
-</ScrollView>
+    <!--<?xml version="1.0" encoding="utf-8"?>-->
+    <!--<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:fillViewport="true">-->
+
+    <!--<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="vertical"-->
+    <!--tools:context="uesocc.ipam2018.aplicacionturismo.MainActivity">-->
+
+    <!--<EditText-->
+    <!--android:id="@+id/inputText"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:inputType="text" />-->
+
+    <!--<Button-->
+    <!--android:id="@+id/btnBuscarSitio"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="Buscar sitio" />-->
+
+    <!--<Button-->
+    <!--android:id="@+id/btnBuscarCategoria"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="Buscar categoria" />-->
+
+    <!--<Button-->
+    <!--android:id="@+id/btnFindByNameLike"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="Buscar por nombre" />-->
+
+    <!--<Button-->
+    <!--android:id="@+id/btnFindByLatitudLongitud"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="Buscar por latitud y longitud" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/idSitio"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="idSitio" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/nombreSitio"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="nombreSitio" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/latitudSitio"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="latitudSitio" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/longitudSitio"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="longitudSitio" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/categoriaSitio"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="idCategoria" />-->
+
+    <!--<TextView-->
+    <!--android:id="@+id/descripcionSitio"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:text="descripcionSitio" />-->
+
+    <!--<ImageView-->
+    <!--android:id="@+id/imagenSitio"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--app:srcCompat="@mipmap/ic_launcher" />-->
+
+
+    <!--</LinearLayout>-->
+    <!--</ScrollView>-->

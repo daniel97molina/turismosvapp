@@ -22,7 +22,8 @@
         <activity
             android:name=".BuscarActivity"
             android:parentActivityName=".MainActivity" />
-        <activity android:name=".ListaSitiosActivity"></activity>
+        <activity android:name=".ListaSitiosActivity"
+            android:parentActivityName=".MainActivity"></activity>
     </application>
 
 </manifest>
