@@ -177,7 +177,7 @@ public class SitioService {
     public byte[] convertidor(String url) {
         try {
 
-            int imageResource = getResources().getIdentifier(url, null, getPackageName());
+            int imageResource = this.contexto.getResources().getIdentifier(url, null, this.contexto.getPackageName());
             Drawable imagen = ContextCompat.getDrawable(this.contexto, imageResource);
 
             Bitmap bitmap = ((BitmapDrawable) imagen).getBitmap();
@@ -220,7 +220,7 @@ public class SitioService {
         nuevaCategoria4.put("nombre", "Playa");
         db.insert("categoria", null, nuevaCategoria4);
 
-        //Insertar Categoria 3
+        //Insertar Categoria 5
         ContentValues nuevaCategoria5 = new ContentValues();
         nuevaCategoria5.put("idCategoria", 5);
         nuevaCategoria5.put("nombre", "Pueblo Vivo");

@@ -43,6 +43,9 @@ public class MainActivity extends AppCompatActivity {
 
     SQLiteDatabase db;
 
+    //Instancia de SitioService
+    SitioService sitioService = new SitioService(getApplicationContext());
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,11 +66,11 @@ public class MainActivity extends AppCompatActivity {
 
         //Manejo de la BD
         ConexionSQLiteHelper conexion = new ConexionSQLiteHelper(this, "DBTurismo", null, 1);
-        db = conexion.getWritableDatabase();
+        //db = conexion.getWritableDatabase();
 
         //Insersion de datos a la base
-        //insertarCategorias();
-        //insertarSitios();
+        sitioService.insertarCategorias();
+        sitioService.insertarSitios();
 
         final ArrayList<Categoria> category = new ArrayList<Categoria>();
 //        category.add(new Categoria("1","cat1","descripcion1",
@@ -94,13 +97,13 @@ public class MainActivity extends AppCompatActivity {
 //            @Override
 //            public void onClick(View view) {
 //                Sitio sitio = new Sitio();
-//                sitio = findById(Integer.parseInt(inputText.getText().toString()));
+//                sitio = sitioService.findById(Integer.parseInt(inputText.getText().toString()));
 //
 //                idSitio.setText(sitio.getIdSitio().toString());
 //                nombreSitio.setText(sitio.getNombre().toString());
 //                latitudSitio.setText(String.valueOf(sitio.getLatitud()));
 //                longitudSitio.setText(String.valueOf(sitio.getLongitud()));
-//                categoriaSitio.setText(nombreCategoria(sitio.getIdCategoria()).toString());
+//                categoriaSitio.setText(sitioService.nombreCategoria(sitio.getIdCategoria()).toString());
 //                descripcionSitio.setText(sitio.getDescripcion().toString());
 //                imagenSitio.setImageBitmap(sitio.getImagen());
 //
@@ -110,13 +113,13 @@ public class MainActivity extends AppCompatActivity {
 //            @Override
 //            public void onClick(View view) {
 //                List<Sitio> listaSitios = new ArrayList<Sitio>();
-//                listaSitios = findByCategoria(Integer.parseInt(inputText.getText().toString()));
+//                listaSitios = sitioService.findByCategoria(Integer.parseInt(inputText.getText().toString()));
 //
 //                idSitio.setText(listaSitios.get(1).getIdSitio().toString());
 //                nombreSitio.setText(listaSitios.get(1).getNombre().toString());
 //                latitudSitio.setText(String.valueOf(listaSitios.get(1).getLatitud()));
 //                longitudSitio.setText(String.valueOf(listaSitios.get(1).getLongitud()));
-//                categoriaSitio.setText(nombreCategoria(listaSitios.get(1).getIdCategoria()).toString());
+//                categoriaSitio.setText(sitioService.nombreCategoria(listaSitios.get(1).getIdCategoria()).toString());
 //                descripcionSitio.setText(listaSitios.get(1).getDescripcion().toString());
 //                imagenSitio.setImageBitmap(listaSitios.get(1).getImagen());
 //
@@ -126,13 +129,13 @@ public class MainActivity extends AppCompatActivity {
 //            @Override
 //            public void onClick(View view) {
 //                List<Sitio> listaSitios = new ArrayList<Sitio>();
-//                listaSitios = findByNameLike(inputText.getText().toString());
+//                listaSitios = sitioService.findByNameLike(inputText.getText().toString());
 //
 //                idSitio.setText(listaSitios.get(0).getIdSitio().toString());
 //                nombreSitio.setText(listaSitios.get(0).getNombre().toString());
 //                latitudSitio.setText(String.valueOf(listaSitios.get(0).getLatitud()));
 //                longitudSitio.setText(String.valueOf(listaSitios.get(0).getLongitud()));
-//                categoriaSitio.setText(nombreCategoria(listaSitios.get(0).getIdCategoria()).toString());
+//                categoriaSitio.setText(sitioService.nombreCategoria(listaSitios.get(0).getIdCategoria()).toString());
 //                descripcionSitio.setText(listaSitios.get(0).getDescripcion().toString());
 //                imagenSitio.setImageBitmap(listaSitios.get(0).getImagen());
 //
@@ -142,13 +145,13 @@ public class MainActivity extends AppCompatActivity {
 //            @Override
 //            public void onClick(View view) {
 //                List<Sitio> listaSitios = new ArrayList<Sitio>();
-//                listaSitios = findByLatitudLongitud("13.979577","-89.674207");
+//                listaSitios = sitioService.findByLatitudLongitud("13.979577","-89.674207");
 //
 //                idSitio.setText(listaSitios.get(0).getIdSitio().toString());
 //                nombreSitio.setText(listaSitios.get(0).getNombre().toString());
 //                latitudSitio.setText(String.valueOf(listaSitios.get(0).getLatitud()));
 //                longitudSitio.setText(String.valueOf(listaSitios.get(0).getLongitud()));
-//                categoriaSitio.setText(nombreCategoria(listaSitios.get(0).getIdCategoria()).toString());
+//                categoriaSitio.setText(sitioService.nombreCategoria(listaSitios.get(0).getIdCategoria()).toString());
 //                descripcionSitio.setText(listaSitios.get(0).getDescripcion().toString());
 //                imagenSitio.setImageBitmap(listaSitios.get(0).getImagen());
 //
@@ -161,7 +164,6 @@ public class MainActivity extends AppCompatActivity {
         getMenuInflater().inflate(R.menu.main,menu);
         return super.onCreateOptionsMenu(menu);
     }
-
 
 
 }
