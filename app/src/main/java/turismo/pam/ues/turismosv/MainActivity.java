@@ -183,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
                 break;
             case R.id.barra_ubicacion:
-                intent = new Intent(this, ListaSitiosActivity.class);
+                intent = new Intent(this, MapsActivityCercano.class);
                 intent.putExtra("CodigoBusqueda",0);
                 //TODO llamar metodo de cercanos
                 startActivity(intent);
