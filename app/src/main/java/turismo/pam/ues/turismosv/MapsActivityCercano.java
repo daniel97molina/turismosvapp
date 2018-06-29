@@ -19,6 +19,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -32,6 +34,7 @@ public class MapsActivityCercano extends AppCompatActivity implements OnMapReady
             Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.INTERNET
     };
+    private GoogleApiClient mGoogleApi;
     final static int INITIAL_REQUEST = 1337;
     Location location;
     LocationManager locationManager;
@@ -44,6 +47,13 @@ public class MapsActivityCercano extends AppCompatActivity implements OnMapReady
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps_cercano);
+
+//        mGoogleApi = new GoogleApiClient
+//                .Builder(this)
+//                .addApi(Places.GEO_DATA_API)
+//                .addApi(Places.PLACE_DETECTION_API)
+//                .enableAutoManage(this, this)
+//                .build();
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
 
