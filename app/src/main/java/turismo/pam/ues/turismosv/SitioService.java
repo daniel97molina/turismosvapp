@@ -324,6 +324,57 @@ public class SitioService extends AppCompatActivity {
                 "En 1992 El Imposible entró en las listas provisionales del Patrimonio de la Humanidad de la UNESCO junto con Cara Sucia.");
         db.insert("sitio", null, nuevoRegistro8);
 
+        //Insertar Sitio 9
+        ContentValues nuevoRegistro9 = new ContentValues();
+        nuevoRegistro9.put("idSitio", 9);
+        nuevoRegistro9.put("nombre", "Playa Metalío");
+        nuevoRegistro9.put("latitud", 13.629466);
+        nuevoRegistro9.put("longitud",-89.887554);
+        nuevoRegistro9.put("idCategoria", 4);
+        byte[] byteImagen9 = convertidor("@mipmap/metalio");
+        nuevoRegistro9.put("imagen", byteImagen9);
+        nuevoRegistro9.put("descripcion", "Esta playa se caracteriza por tener arenas grisáceas, aguas claras y una variedad de restaurantes a la orilla donde se pueden degustar exquisitos platillos, por lo cual se convierte en un destino perfecto para los turistas.\n\n"+
+                "Esta playa también es un destino perfecto para los fotógrafos y las personas que deseen observar los hermosos atardeceres en cualquier época del año.");
+        db.insert("sitio", null, nuevoRegistro9);
+
+        //Insertar Sitio 10
+        ContentValues nuevoRegistro10 = new ContentValues();
+        nuevoRegistro10.put("idSitio", 10);
+        nuevoRegistro10.put("nombre", "Playa Los Cabanos");
+        nuevoRegistro10.put("latitud", 13.525550);
+        nuevoRegistro10.put("longitud", -89.796690);
+        nuevoRegistro10.put("idCategoria", 4);
+        byte[] byteImagen10 = convertidor("@mipmap/cobanos");
+        nuevoRegistro10.put("imagen", byteImagen10);
+        nuevoRegistro10.put("descripcion", "Debido a que contiene muchos arrecifes, se convierte también en una excelente opción para los amantes del buceo; que de hecho algunos operadores turísticos ofrecen en sus paquetes en la temporada del verano.\n\n"+
+                "Los Cóbanos es una playa de origen volcánico, su arena de color blanco y sus rocas te sorprenderán.");
+        db.insert("sitio", null, nuevoRegistro10);
+
+        //Insertar Sitio 11
+        ContentValues nuevoRegistro11 = new ContentValues();
+        nuevoRegistro11.put("idSitio", 11);
+        nuevoRegistro11.put("nombre", "Tacuba");
+        nuevoRegistro11.put("latitud", 13.900304);
+        nuevoRegistro11.put("longitud", -89.932486);
+        nuevoRegistro11.put("idCategoria", 5);
+        byte[] byteImagen11 = convertidor("@mipmap/tacuba");
+        nuevoRegistro11.put("imagen", byteImagen11);
+        nuevoRegistro11.put("descripcion", "Tacuba es un municipio del departamento de Ahuachapán, El Salvador. Tiene una población estimada de 31 209 habitantes para el año 2013.\n\n"+
+                "Las fiestas patronales de Tacuba se celebran en el mes de julio en honor a Santa María Magdalena.Entre los atractivos del municipio se encuentran las ruinas del antiguo templo católico construido a principios del siglo XVII, el cual terminó derrumbado por los terremotos de 1773.También existe la práctica del senderismo, ya que se encuentra cercano al Parque nacional El Imposible.");
+        db.insert("sitio", null, nuevoRegistro11);
+
+        //Insertar Sitio 12
+        ContentValues nuevoRegistro12 = new ContentValues();
+        nuevoRegistro12.put("idSitio", 12);
+        nuevoRegistro12.put("nombre", "Apaneca");
+        nuevoRegistro12.put("latitud", 13.856644);
+        nuevoRegistro12.put("longitud", -89.803628);
+        nuevoRegistro12.put("idCategoria", 5);
+        byte[] byteImagen12 = convertidor("@mipmap/apaneca");
+        nuevoRegistro12.put("imagen", byteImagen12);
+        nuevoRegistro12.put("descripcion", "Apaneca es un municipio del departamento de Ahuachapán, El Salvador. Tiene una población estimada de 8350 habitantes para el año 2013.\n\n"+
+                "Unas de las experiencias que puedes vivir es el Laberinto de Albania, el más grande de Centro América, es una lugar hermoso, con un clima fresco y su característico olor a cipres es un lugar que te enamorará.");
+        db.insert("sitio", null, nuevoRegistro12);
     }
 
 
