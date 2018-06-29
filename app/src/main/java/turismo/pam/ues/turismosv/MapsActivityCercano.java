@@ -27,6 +27,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -153,7 +154,8 @@ public class MapsActivityCercano extends AppCompatActivity implements OnMapReady
         for (int i=0; i<listaCercanos.size();i++){
             mMap.addMarker(new MarkerOptions().position(new LatLng(listaCercanos.get(i).getLatitud(), listaCercanos.get(i).getLongitud())).title(listaCercanos.get(i).getNombre().toString()));
         }
-        mMap.addMarker(new MarkerOptions().position(lugarActual).title("Aqui estoy"));
+        mMap.addMarker(new MarkerOptions().position(lugarActual).title("Aqui estoy")
+                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(lugarActual, 17f));
     }
 
