@@ -69,7 +69,12 @@ public class AdapterSitio extends BaseAdapter{
             title.setText(s.getNombre());
 
             TextView description = (TextView) v.findViewById(R.id.txtDescripcionSitio);
-            description.setText(s.getDescripcion());
+            String desc = s.getDescripcion().toString();
+            if(desc.length()>170){
+                desc = desc.substring(0,169);
+                desc = desc+"...";
+            }
+            description.setText(desc);
 
             ImageView imagen = (ImageView) v.findViewById(R.id.imgSitio);
             imagen.setImageBitmap(s.getImagen());
