@@ -18,6 +18,7 @@ public class SitioActivity extends AppCompatActivity {
 
     //Instancia de SitioService
     SitioService sitioService;
+    Sitio sitio;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,7 @@ public class SitioActivity extends AppCompatActivity {
         Intent intent = getIntent();
         int idSitio = intent.getIntExtra("idSitio",1);
 
-        Sitio sitio = sitioService.findById(idSitio);
+        sitio = sitioService.findById(idSitio);
 
         TextView sitio_nombre = findViewById(R.id.sitio_nombre);
         TextView sitio_descripcion = findViewById(R.id.sitio_descripcion);
@@ -57,6 +58,14 @@ public class SitioActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void mapa(View v){
+        Intent intent = new Intent(this, MapsActivity.class);
+        intent.putExtra("latitud",sitio.getLatitud());
+        intent.putExtra("longitud",sitio.getLongitud());
+        intent.putExtra("nombre",sitio.getNombre());
+        startActivity(intent);
     }
 
 
