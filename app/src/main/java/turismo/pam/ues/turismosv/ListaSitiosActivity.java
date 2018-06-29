@@ -6,8 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.sql.SQLOutput;
@@ -63,6 +65,7 @@ public class ListaSitiosActivity extends AppCompatActivity {
         final List<Sitio> sitios = listaPrevia;
 
         ListView lv = (ListView) findViewById(R.id.listaSitios);
+
         AdapterSitio adapter = new AdapterSitio(this, sitios);
 
         lv.setAdapter(adapter);
@@ -75,6 +78,7 @@ public class ListaSitiosActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 
 
