@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -48,5 +49,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap.addMarker(new MarkerOptions().position(place).title(nombre));
         // Add a marker in Sydney and move the camera
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(place,17f));
+    }
+
+    public void cerrar(View v){
+        this.finish();
     }
 }

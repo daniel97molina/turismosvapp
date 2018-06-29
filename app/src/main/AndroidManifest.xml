@@ -28,7 +28,6 @@
         </activity>
         <activity
             android:name=".SitioActivity"
-            android:launchMode="singleTop"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".BuscarActivity"
@@ -50,8 +49,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".MapsActivity"
-            android:parentActivityName=".SitioActivity"/>
+            android:name=".MapsActivity"/>
     </application>
 
 </manifest>

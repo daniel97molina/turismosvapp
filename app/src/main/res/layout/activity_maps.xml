@@ -6,6 +6,25 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="0px"
+        android:layout_marginRight="0px"
+        android:layout_marginBottom="0px"
+        android:layout_marginTop="0px"
+        android:layout_weight="1"
+        android:drawableLeft="@drawable/ic_arrow_back_black_24dp"
+        android:text="Regresar"
+        android:background="#373d46"
+        android:textColor="#fff"
+        android:fontFamily="@font/lemonmilk"
+        android:paddingLeft="30sp"
+        android:paddingRight="30sp"
+        android:onClick="cerrar"
+        android:drawableStart="@drawable/ic_arrow_back_black_24dp" />
+
     <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
