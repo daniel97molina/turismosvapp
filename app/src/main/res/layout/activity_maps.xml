@@ -9,21 +9,21 @@
     <Button
         android:id="@+id/button2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
+        android:layout_marginBottom="0px"
         android:layout_marginLeft="0px"
         android:layout_marginRight="0px"
-        android:layout_marginBottom="0px"
         android:layout_marginTop="0px"
         android:layout_weight="1"
-        android:drawableLeft="@drawable/ic_arrow_back_black_24dp"
-        android:text="Regresar"
         android:background="#373d46"
-        android:textColor="#fff"
+        android:drawableLeft="@drawable/ic_arrow_back_black_24dp"
+        android:drawableStart="@drawable/ic_arrow_back_black_24dp"
         android:fontFamily="@font/lemonmilk"
-        android:paddingLeft="30sp"
-        android:paddingRight="30sp"
         android:onClick="cerrar"
-        android:drawableStart="@drawable/ic_arrow_back_black_24dp" />
+        android:paddingLeft="20sp"
+        android:paddingRight="50sp"
+        android:text="Regresar"
+        android:textColor="#fff" />
 
     <fragment
         android:id="@+id/map"
