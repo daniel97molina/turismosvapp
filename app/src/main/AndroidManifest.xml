@@ -28,7 +28,7 @@
         </activity>
         <activity
             android:name=".SitioActivity"
-            android:launchMode="singleTask"
+            android:launchMode="singleTop"
             android:parentActivityName=".MainActivity" />
         <activity
             android:name=".BuscarActivity"
@@ -51,7 +51,7 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"  android:parentActivityName=".SitioActivity"></activity>
+            android:parentActivityName=".SitioActivity"/>
     </application>
 
 </manifest>
