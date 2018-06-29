@@ -60,12 +60,12 @@ public class MapsActivityCercano extends AppCompatActivity implements OnMapReady
         ConexionSQLiteHelper conexion = new ConexionSQLiteHelper(this, "DBTurismo", null, 1);
         db = conexion.getWritableDatabase();
         sitioService = new SitioService(db, getApplicationContext());
-   mGoogleApi = new GoogleApiClient
-                .Builder(this)
-                .addApi(Places.GEO_DATA_API)
-                .addApi(Places.PLACE_DETECTION_API)
-                .enableAutoManage(this, this)
-                .build();
+//   mGoogleApi = new GoogleApiClient
+//                .Builder(this)
+//                .addApi(Places.GEO_DATA_API)
+//                .addApi(Places.PLACE_DETECTION_API)
+//                .enableAutoManage(this, this)
+//                .build();
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
 
@@ -131,6 +131,8 @@ public class MapsActivityCercano extends AppCompatActivity implements OnMapReady
         }
     }
 
+
+
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -143,7 +145,7 @@ public class MapsActivityCercano extends AppCompatActivity implements OnMapReady
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-
+        //getLatlng();
         // Add a marker in Sydney and move the camera
         LatLng lugarActual = new LatLng(location.getLatitude(), location.getLongitude());
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
