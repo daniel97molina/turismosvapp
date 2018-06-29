@@ -88,6 +88,40 @@ public class SitioService extends AppCompatActivity {
         }
     }
 
+    public List<Sitio> findByRelacionados(int idCategoria) {
+        String[] parametros = new String[]{String.valueOf(idCategoria)};
+        String[] campos = new String[]{"idSitio", "nombre", "latitud", "longitud", "descripcion", "imagen", "idCategoria"};
+
+        try {
+            ArrayList<Sitio> list = new ArrayList<Sitio>();
+            Cursor cursor = db.query("sitio", campos, "idCategoria=?", parametros, null, null, null);
+
+            if (cursor.moveToFirst()) {
+                do {
+                    if (idCategoria != cursor.getInt(0)) {
+                        byte[] blob = cursor.getBlob(5);
+                        Bitmap bmp = BitmapFactory.decodeByteArray(blob, 0, blob.length);
+                        Sitio sitio = new Sitio(cursor.getInt(0), cursor.getString(1), cursor.getDouble(2), cursor.getDouble(3), cursor.getString(4), bmp, cursor.getInt(6));
+
+                        list.add(sitio);
+                    }
+                } while (cursor.moveToNext());
+            } else {
+                Toast.makeText(this.contexto, "Categoria no encontrada", Toast.LENGTH_SHORT).show();
+                return null;
+            }
+            if (cursor != null && !cursor.isClosed()) {//Se cierra el cursor si no está cerrado ya
+                cursor.close();
+            }
+
+            return list;
+
+        } catch (Exception e) {
+            Toast.makeText(this.contexto, "Error al buscar la categoria", Toast.LENGTH_SHORT).show();
+            return Collections.emptyList();
+        }
+    }
+
     public List<Sitio> findByNameLike(String texto) {
         String[] parametros = new String[]{"%" + texto + "%"};
 
@@ -307,7 +341,7 @@ public class SitioService extends AppCompatActivity {
         nuevoRegistro7.put("idCategoria", 3);
         byte[] byteImagen7 = convertidor("@mipmap/cerroverde");
         nuevoRegistro7.put("imagen", byteImagen7);
-        nuevoRegistro7.put("descripcion", "El Cerro Verde o Cuntetepeque​ es un volcán extinto ubicado en el Departamento de Santa Ana, El Salvador, en la cordillera de Apaneca. Tiene una altura de 2030 msnm y su cráter se encuentra erosionado y cubierto por un espeso bosque nebuloso. Se estima que su última erupción fue hace 25 mil años a. C.\n\n"+
+        nuevoRegistro7.put("descripcion", "El Cerro Verde o Cuntetepeque​ es un volcán extinto ubicado en el Departamento de Santa Ana, El Salvador, en la cordillera de Apaneca. Tiene una altura de 2030 msnm y su cráter se encuentra erosionado y cubierto por un espeso bosque nebuloso. Se estima que su última erupción fue hace 25 mil años a. C.\n\n" +
                 "El Cerro Verde es parte del Parque Nacional Los Volcanes El Salvador contando con una extensión de 2,734.6 hectáreas y una total todo el parque de 4,500 hectáreas, entre tierras estatales, municipales y privadas que es administrado por el Ministerio de Medio Ambiental y Recursos Naturales; ofrece miradores a los volcanes de Santa Ana, Izalco y al Lago de Coatepeque, además de un orquidiario, paseo por el bosque y escaladas al mismo Volcán de Izalco (altura 1,980 metros sobre el nivel del mar) y al de Santa Ana (altura 2,381 metros sobre el nivel del mar). El parque también cuenta con tres senderos recreativos: Las Flores Misteriosas, Ventana a la Naturaleza y Antiguo Hotel de Montaña.");
         db.insert("sitio", null, nuevoRegistro7);
 
@@ -320,7 +354,7 @@ public class SitioService extends AppCompatActivity {
         nuevoRegistro8.put("idCategoria", 3);
         byte[] byteImagen8 = convertidor("@mipmap/imposible");
         nuevoRegistro8.put("imagen", byteImagen8);
-        nuevoRegistro8.put("descripcion", "El Parque Nacional El Imposible es un parque nacional en El Salvador. Fue creado el 1 de enero de 1989 y cubre un área de 5,000 hectáreas. Tiene una altitud de entre 250 y 1.425 metros.\n\n"+
+        nuevoRegistro8.put("descripcion", "El Parque Nacional El Imposible es un parque nacional en El Salvador. Fue creado el 1 de enero de 1989 y cubre un área de 5,000 hectáreas. Tiene una altitud de entre 250 y 1.425 metros.\n\n" +
                 "En 1992 El Imposible entró en las listas provisionales del Patrimonio de la Humanidad de la UNESCO junto con Cara Sucia.");
         db.insert("sitio", null, nuevoRegistro8);
 
@@ -329,11 +363,11 @@ public class SitioService extends AppCompatActivity {
         nuevoRegistro9.put("idSitio", 9);
         nuevoRegistro9.put("nombre", "Playa Metalío");
         nuevoRegistro9.put("latitud", 13.629466);
-        nuevoRegistro9.put("longitud",-89.887554);
+        nuevoRegistro9.put("longitud", -89.887554);
         nuevoRegistro9.put("idCategoria", 4);
         byte[] byteImagen9 = convertidor("@mipmap/metalio");
         nuevoRegistro9.put("imagen", byteImagen9);
-        nuevoRegistro9.put("descripcion", "Esta playa se caracteriza por tener arenas grisáceas, aguas claras y una variedad de restaurantes a la orilla donde se pueden degustar exquisitos platillos, por lo cual se convierte en un destino perfecto para los turistas.\n\n"+
+        nuevoRegistro9.put("descripcion", "Esta playa se caracteriza por tener arenas grisáceas, aguas claras y una variedad de restaurantes a la orilla donde se pueden degustar exquisitos platillos, por lo cual se convierte en un destino perfecto para los turistas.\n\n" +
                 "Esta playa también es un destino perfecto para los fotógrafos y las personas que deseen observar los hermosos atardeceres en cualquier época del año.");
         db.insert("sitio", null, nuevoRegistro9);
 
@@ -346,7 +380,7 @@ public class SitioService extends AppCompatActivity {
         nuevoRegistro10.put("idCategoria", 4);
         byte[] byteImagen10 = convertidor("@mipmap/cobanos");
         nuevoRegistro10.put("imagen", byteImagen10);
-        nuevoRegistro10.put("descripcion", "Debido a que contiene muchos arrecifes, se convierte también en una excelente opción para los amantes del buceo; que de hecho algunos operadores turísticos ofrecen en sus paquetes en la temporada del verano.\n\n"+
+        nuevoRegistro10.put("descripcion", "Debido a que contiene muchos arrecifes, se convierte también en una excelente opción para los amantes del buceo; que de hecho algunos operadores turísticos ofrecen en sus paquetes en la temporada del verano.\n\n" +
                 "Los Cóbanos es una playa de origen volcánico, su arena de color blanco y sus rocas te sorprenderán.");
         db.insert("sitio", null, nuevoRegistro10);
 
@@ -359,7 +393,7 @@ public class SitioService extends AppCompatActivity {
         nuevoRegistro11.put("idCategoria", 5);
         byte[] byteImagen11 = convertidor("@mipmap/tacuba");
         nuevoRegistro11.put("imagen", byteImagen11);
-        nuevoRegistro11.put("descripcion", "Tacuba es un municipio del departamento de Ahuachapán, El Salvador. Tiene una población estimada de 31 209 habitantes para el año 2013.\n\n"+
+        nuevoRegistro11.put("descripcion", "Tacuba es un municipio del departamento de Ahuachapán, El Salvador. Tiene una población estimada de 31 209 habitantes para el año 2013.\n\n" +
                 "Las fiestas patronales de Tacuba se celebran en el mes de julio en honor a Santa María Magdalena.Entre los atractivos del municipio se encuentran las ruinas del antiguo templo católico construido a principios del siglo XVII, el cual terminó derrumbado por los terremotos de 1773.También existe la práctica del senderismo, ya que se encuentra cercano al Parque nacional El Imposible.");
         db.insert("sitio", null, nuevoRegistro11);
 
@@ -372,7 +406,7 @@ public class SitioService extends AppCompatActivity {
         nuevoRegistro12.put("idCategoria", 5);
         byte[] byteImagen12 = convertidor("@mipmap/apaneca");
         nuevoRegistro12.put("imagen", byteImagen12);
-        nuevoRegistro12.put("descripcion", "Apaneca es un municipio del departamento de Ahuachapán, El Salvador. Tiene una población estimada de 8350 habitantes para el año 2013.\n\n"+
+        nuevoRegistro12.put("descripcion", "Apaneca es un municipio del departamento de Ahuachapán, El Salvador. Tiene una población estimada de 8350 habitantes para el año 2013.\n\n" +
                 "Unas de las experiencias que puedes vivir es el Laberinto de Albania, el más grande de Centro América, es una lugar hermoso, con un clima fresco y su característico olor a cipres es un lugar que te enamorará.");
         db.insert("sitio", null, nuevoRegistro12);
     }
