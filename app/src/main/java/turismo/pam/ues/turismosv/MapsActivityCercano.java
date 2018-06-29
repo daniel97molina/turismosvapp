@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.sqlite.SQLiteDatabase;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -19,6 +20,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.places.Places;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -28,7 +30,9 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapsActivityCercano extends AppCompatActivity implements OnMapReadyCallback {
+import java.util.List;
+
+public class MapsActivityCercano extends AppCompatActivity implements OnMapReadyCallback,GoogleApiClient.OnConnectionFailedListener {
     final static String[] INIT_PERMS = {
             Manifest.permission.ACCESS_COARSE_LOCATION,
             Manifest.permission.ACCESS_FINE_LOCATION,
@@ -41,6 +45,10 @@ public class MapsActivityCercano extends AppCompatActivity implements OnMapReady
     LocationListener locationListener;
     private GoogleMap mMap;
     AlertDialog alert = null;
+    SQLiteDatabase db;
+
+    //Instancia de SitioService
+    SitioService sitioService;
 
 
     @Override
@@ -48,12 +56,16 @@ public class MapsActivityCercano extends AppCompatActivity implements OnMapReady
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps_cercano);
 
-//        mGoogleApi = new GoogleApiClient
-//                .Builder(this)
-//                .addApi(Places.GEO_DATA_API)
-//                .addApi(Places.PLACE_DETECTION_API)
-//                .enableAutoManage(this, this)
-//                .build();
+        //Manejo de la BD
+        ConexionSQLiteHelper conexion = new ConexionSQLiteHelper(this, "DBTurismo", null, 1);
+        db = conexion.getWritableDatabase();
+        sitioService = new SitioService(db, getApplicationContext());
+   mGoogleApi = new GoogleApiClient
+                .Builder(this)
+                .addApi(Places.GEO_DATA_API)
+                .addApi(Places.PLACE_DETECTION_API)
+                .enableAutoManage(this, this)
+                .build();
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 
 
@@ -135,6 +147,10 @@ public class MapsActivityCercano extends AppCompatActivity implements OnMapReady
         // Add a marker in Sydney and move the camera
         LatLng lugarActual = new LatLng(location.getLatitude(), location.getLongitude());
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+        List<Sitio> listaCercanos = sitioService.findAllSitios();
+        for (int i=0; i<listaCercanos.size();i++){
+            mMap.addMarker(new MarkerOptions().position(new LatLng(listaCercanos.get(i).getLatitud(), listaCercanos.get(i).getLongitud())).title(listaCercanos.get(i).getNombre().toString()));
+        }
         mMap.addMarker(new MarkerOptions().position(lugarActual).title("Aqui estoy"));
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(lugarActual, 17f));
     }
@@ -181,4 +197,8 @@ public class MapsActivityCercano extends AppCompatActivity implements OnMapReady
     }
 
 
+    @Override
+    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+
+    }
 }

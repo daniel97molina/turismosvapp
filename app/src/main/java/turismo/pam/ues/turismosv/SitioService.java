@@ -153,6 +153,35 @@ public class SitioService extends AppCompatActivity {
             return Collections.emptyList();
         }
     }
+    public List<Sitio> findAllSitios() {
+        String[] parametros = new String[]{"0"};
+        try {
+            ArrayList<Sitio> list = new ArrayList<Sitio>();
+            Cursor cursor = db.rawQuery("SELECT * FROM sitio WHERE idSitio<>?", parametros);
+
+            if (cursor.moveToFirst()) {
+                do {
+                    byte[] blob = cursor.getBlob(5);
+                    Bitmap bmp = BitmapFactory.decodeByteArray(blob, 0, blob.length);
+                    Sitio sitio = new Sitio(cursor.getInt(0), cursor.getString(1), cursor.getDouble(2), cursor.getDouble(3), cursor.getString(4), bmp, cursor.getInt(6));
+
+                    list.add(sitio);
+                } while (cursor.moveToNext());
+            } else {
+                Toast.makeText(this.contexto, "No se encontro ningún sitio", Toast.LENGTH_SHORT).show();
+                return null;
+            }
+            if (cursor != null && !cursor.isClosed()) {//Se cierra el cursor si no está cerrado ya
+                cursor.close();
+            }
+
+            return list;
+
+        } catch (Exception e) {
+            Toast.makeText(this.contexto, "Error al buscar todos los sitios", Toast.LENGTH_SHORT).show();
+            return Collections.emptyList();
+        }
+    }
 
     public List<Sitio> findByLatitudLongitud(String latitud, String longitud) {
         String[] parametros = new String[]{latitud, longitud};
