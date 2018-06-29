@@ -62,6 +62,15 @@ public class MainActivity extends AppCompatActivity {
         db = conexion.getWritableDatabase();
         sitioService = new SitioService(db, getApplicationContext());
 
+
+    try {
+        //Insersion de datos a la base
+        sitioService.insertarCategorias();
+        sitioService.insertarSitios();
+    }catch(Exception e){
+        System.out.println("Error al insertar los datos..."+e.getMessage());
+    }
+
 //                inputText = (EditText) findViewById(R.id.inputText);
 //        btnBuscarSitio = (Button) findViewById(R.id.btnBuscarSitio);
 //        btnBuscarCategoria = (Button) findViewById(R.id.btnBuscarCategoria);
@@ -79,10 +88,6 @@ public class MainActivity extends AppCompatActivity {
         // TODO setTypeface(tf);
 
 
-
-        //Insersion de datos a la base
-        //sitioService.insertarCategorias();
-        //sitioService.insertarSitios();
 
 
 //        final ArrayList<Categoria> categorias = new ArrayList<Categoria>();

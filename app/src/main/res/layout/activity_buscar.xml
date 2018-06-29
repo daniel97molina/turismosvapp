@@ -8,7 +8,7 @@
     tools:context="turismo.pam.ues.turismosv.BuscarActivity">
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/txtBuscar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
@@ -20,12 +20,14 @@
         android:inputType="textPersonName"
         android:textColor="#ffffff"
         android:textColorHint="#ffffff"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintEnd_toStartOf="@+id/btnBuscar"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="24dp" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnBuscar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="24dp"
@@ -35,5 +37,7 @@
         android:text="Buscar"
         android:textColor="@color/colorPrimaryDark"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="redirigirBotones"
+        android:layout_marginRight="24dp" />
 </android.support.constraint.ConstraintLayout>

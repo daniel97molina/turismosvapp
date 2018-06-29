@@ -88,8 +88,9 @@ public class SitioService extends AppCompatActivity {
         }
     }
 
-    public List<Sitio> findByRelacionados(int idCategoria) {
-        String[] parametros = new String[]{String.valueOf(idCategoria)};
+    public List<Sitio> findByRelacionados(int idSitio) {
+        Sitio s = this.findById(idSitio);
+        String[] parametros = new String[]{String.valueOf(s.getIdCategoria())};
         String[] campos = new String[]{"idSitio", "nombre", "latitud", "longitud", "descripcion", "imagen", "idCategoria"};
 
         try {
@@ -98,7 +99,7 @@ public class SitioService extends AppCompatActivity {
 
             if (cursor.moveToFirst()) {
                 do {
-                    if (idCategoria != cursor.getInt(0)) {
+                    if (idSitio != cursor.getInt(0)) {
                         byte[] blob = cursor.getBlob(5);
                         Bitmap bmp = BitmapFactory.decodeByteArray(blob, 0, blob.length);
                         Sitio sitio = new Sitio(cursor.getInt(0), cursor.getString(1), cursor.getDouble(2), cursor.getDouble(3), cursor.getString(4), bmp, cursor.getInt(6));

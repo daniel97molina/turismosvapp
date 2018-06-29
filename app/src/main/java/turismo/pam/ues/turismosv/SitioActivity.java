@@ -41,7 +41,7 @@ public class SitioActivity extends AppCompatActivity {
         sitio_descripcion.setText(sitio.getDescripcion().toString());
         img.setImageBitmap(sitio.getImagen());
 
-        final List<Sitio> sitios = sitioService.findByCategoria(sitio.getIdCategoria());
+        final List<Sitio> sitios = sitioService.findByRelacionados(sitio.getIdSitio());
 
         ListView lv = (ListView) findViewById(R.id.sitio_relacionados);
         AdapterSitio adapter = new AdapterSitio(this, sitios);

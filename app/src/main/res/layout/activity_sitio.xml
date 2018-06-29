@@ -33,11 +33,13 @@
             android:id="@+id/sitio_imagen"
             android:layout_width="380dp"
             android:layout_height="178dp"
+            android:background="@mipmap/cerroverde"
+            android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@android:color/holo_green_light"
-            app:layout_constraintVertical_chainStyle="spread"/>
+            app:layout_constraintVertical_chainStyle="spread"
+            app:srcCompat="@android:color/holo_blue_dark" />
 
         <TextView
             android:id="@+id/sitio_nombre"
@@ -47,7 +49,8 @@
             android:layout_marginTop="24dp"
             android:text="TextView"
             android:textColor="@android:color/holo_blue_dark"
-            android:textSize="22sp"
+            android:textSize="16sp"
+            android:fontFamily="@font/lemonmilk"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/sitio_imagen"
             android:layout_marginLeft="24dp" />
@@ -71,12 +74,12 @@
             android:id="@+id/textView4"
             android:layout_width="352dp"
             android:layout_height="36dp"
-            android:layout_marginLeft="24dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="32dp"
             android:text="Lugares relacionados"
             android:textColor="@android:color/holo_blue_dark"
-            android:textSize="22sp"
+            android:textSize="16sp"
+            android:fontFamily="@font/lemonmilk"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/sitio_descripcion"
             tools:text="Lugares relacionados" />

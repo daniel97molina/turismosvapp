@@ -52,8 +52,7 @@ public class ListaSitiosActivity extends AppCompatActivity {
                 break;
             case -1:
                 txtTitulo.setText("Resultados de búsqueda");
-                //TODO por nombre
-                listaPrevia = service.findByCategoria(1);
+                listaPrevia = service.findByNameLike(intent.getStringExtra("Nombre"));
                 break;
             default:
                 txtTitulo.setText(sitioService.nombreCategoria(codigoBusqueda));
@@ -63,22 +62,23 @@ public class ListaSitiosActivity extends AppCompatActivity {
 
 
         final List<Sitio> sitios = listaPrevia;
+        if(sitios != null && sitios.size()>0) {
 
-        ListView lv = (ListView) findViewById(R.id.listaSitios);
+            ListView lv = (ListView) findViewById(R.id.listaSitios);
 
-        AdapterSitio adapter = new AdapterSitio(this, sitios);
+            AdapterSitio adapter = new AdapterSitio(this, sitios);
 
-        lv.setAdapter(adapter);
+            lv.setAdapter(adapter);
 
-        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(ListaSitiosActivity.this, SitioActivity.class);
-                intent.putExtra("idSitio", sitios.get(position).getIdSitio());
-                startActivity(intent);
-            }
-        });
-
+            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Intent intent = new Intent(ListaSitiosActivity.this, SitioActivity.class);
+                    intent.putExtra("idSitio", sitios.get(position).getIdSitio());
+                    startActivity(intent);
+                }
+            });
+        }
     }
 
 
