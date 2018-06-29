@@ -40,7 +40,7 @@
         android:fontFamily="@font/lemonmilklight"
         android:text="Titulo Frase"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@color/colorPrimaryDark"
+        android:textColor="#616569"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imgSitio"
