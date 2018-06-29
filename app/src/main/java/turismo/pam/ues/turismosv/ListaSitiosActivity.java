@@ -71,7 +71,7 @@ public class ListaSitiosActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(ListaSitiosActivity.this, SitioActivity.class);
-                intent.putExtra("sitio_nombre", sitios.get(position).getNombre());
+                intent.putExtra("idSitio", sitios.get(position).getIdSitio());
                 startActivity(intent);
             }
         });
